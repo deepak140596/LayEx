@@ -13,20 +13,20 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_coordinator_example.*
+import kotlinx.android.synthetic.main.activity_nested_scroll_example.*
 import kotlinx.android.synthetic.main.coordinator_backdrop.*
 import kotlinx.android.synthetic.main.user_profile.*
 
-class CoordinatorExample : AppCompatActivity() {
+class NestedScrollExample : AppCompatActivity() {
 
     lateinit var adapterOne : UserProfileCompactAdapter
     lateinit var adapterTwo : UserProfileCompactAdapter
     lateinit var trendingAdapter : UserActivityAdapter
 
     val currentUser = Repository.createAPerson()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_coordinator_example)
+        setContentView(R.layout.activity_nested_scroll_example)
 
         setupSocialData()
         setupUI()
@@ -40,14 +40,14 @@ class CoordinatorExample : AppCompatActivity() {
 
     fun setupUI(){
 
-        activityCoordinatorLayoutTrendingRecyclerView.layoutManager =
+        nestedScrollRecyclerView.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false)
         coordinatorBackdropRVOne.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
         coordinatorBackdropRVTwo.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
 
-        activityCoordinatorLayoutTrendingRecyclerView.setHasFixedSize(true)
+        nestedScrollRecyclerView.setHasFixedSize(true)
         coordinatorBackdropRVOne.setHasFixedSize(true)
         coordinatorBackdropRVTwo.setHasFixedSize(true)
 
@@ -56,7 +56,7 @@ class CoordinatorExample : AppCompatActivity() {
 
         trendingAdapter = UserActivityAdapter(emptyList())
 
-        activityCoordinatorLayoutTrendingRecyclerView.adapter = trendingAdapter
+        nestedScrollRecyclerView.adapter = trendingAdapter
         coordinatorBackdropRVOne.adapter = adapterOne
         coordinatorBackdropRVTwo.adapter = adapterTwo
 

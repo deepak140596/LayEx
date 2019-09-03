@@ -5,6 +5,7 @@ import ai.rever.explayout.emulatedata.liveDataOne
 import ai.rever.explayout.emulatedata.liveDataThree
 import ai.rever.explayout.emulatedata.liveDataTwo
 import ai.rever.explayout.ui.CoordinatorExample
+import ai.rever.explayout.ui.NestedScrollExample
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,6 +20,11 @@ class MainActivity : AppCompatActivity() {
         mainActivityStartCoordinatorExampleBtn.setOnClickListener {
             startActivity(Intent(this,CoordinatorExample::class.java))
         }
+
+        mainActivityStartScrollingExampleBtn.setOnClickListener {
+            startActivity(Intent(this,NestedScrollExample::class.java))
+        }
+
         setupData()
 
     }
