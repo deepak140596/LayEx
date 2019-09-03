@@ -5,6 +5,7 @@ import ai.rever.explayout.model.PersonItem
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.user_profile_compact.view.*
@@ -23,6 +24,11 @@ class UserProfileCompactAdapter(var personList: List<PersonItem>) : RecyclerView
 
     override fun getItemCount(): Int {
         return personList.size
+    }
+    fun updateList(newList: List<PersonItem>){
+        var diffResult = DiffUtil.calculateDiff(MyDiffUtilCallback(this.personList,newList))
+        personList = newList
+        diffResult.dispatchUpdatesTo(this)
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

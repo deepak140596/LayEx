@@ -1,6 +1,5 @@
 package ai.rever.explayout.model
 
-import ai.rever.explayout.emulatedata.Repository
 import ai.rever.explayout.emulatedata.createRandomPhotoURL
 
 class PersonItem( var name: String) {
@@ -35,6 +34,10 @@ class PersonItem( var name: String) {
     override fun toString(): String {
         val text = "Name: $name, ID: $id, PhotoURL: $photoUrl Breaths: $breaths Minutes: $minutes "
         return text
+    }
+
+    override fun equals(other: Any?): Boolean {
+        return super.equals(other)
     }
 
 }

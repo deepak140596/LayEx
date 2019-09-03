@@ -31,7 +31,6 @@ class CoordinatorExample : AppCompatActivity() {
         setupSocialData()
         setupUI()
         observeLiveData()
-        Repository.mockRealtimeOperations()
     }
 
     fun setupSocialData(){
@@ -74,21 +73,24 @@ class CoordinatorExample : AppCompatActivity() {
     fun observeLiveData(){
         liveDataOne.observe(this, Observer {list ->
             list?.let {
-                adapterOne.personList = it
-                adapterOne.notifyDataSetChanged()
+//                adapterOne.personList = it
+//                adapterOne.notifyDataSetChanged()
+                adapterOne.updateList(it)
             }
         })
         liveDataTwo.observe(this, Observer { list ->
             list?.let {
-                adapterTwo.personList = it
-                adapterTwo.notifyDataSetChanged()
+//                adapterTwo.personList = it
+//                adapterTwo.notifyDataSetChanged()
+                adapterTwo.updateList(it)
             }
         })
 
         liveDataThree.observe(this, Observer {list ->
             list?.let {
-                trendingAdapter.personList = it
-                trendingAdapter.notifyDataSetChanged()
+//                trendingAdapter.personList = it
+//                trendingAdapter.notifyDataSetChanged()
+                trendingAdapter.updateList(it)
             }
         })
     }

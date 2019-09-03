@@ -2,11 +2,16 @@ package ai.rever.explayout.emulatedata
 
 import ai.rever.explayout.model.PersonItem
 import android.os.Handler
+import android.util.Log
 
 class Repository {
 
 
+
     companion object{
+        val ranIndex = 40
+        val ranIndexTwo = 10
+
         fun createAPerson(): PersonItem{
             val index = (Math.random()*100).toInt()
             val person = PersonItem(randomNameList[index])
@@ -24,7 +29,7 @@ class Repository {
         fun addRandomData(){
             val datOne = liveDataOne.value
             datOne?.let {
-                val index = (Math.random()*20).toInt()
+                val index = (Math.random()* ranIndexTwo).toInt()
                 for(i in 1..index){
                     val randomIndex = (Math.random()*it.size).toInt()
                     it.add(randomIndex,createAPerson())
@@ -34,7 +39,7 @@ class Repository {
 
             val dataThree = liveDataThree.value
             dataThree?.let {
-                val index = (Math.random()*20).toInt()
+                val index = (Math.random()* ranIndex).toInt()
                 for(i in 1..index){
                     val randomIndex = (Math.random()*it.size).toInt()
                     it.add(randomIndex,createAPerson())
@@ -44,7 +49,7 @@ class Repository {
 
             val dataTwo = liveDataTwo.value
             dataTwo?.let {
-                val index = (Math.random()*20).toInt()
+                val index = (Math.random()* ranIndexTwo).toInt()
                 for(i in 1..index){
                     val randomIndex = (Math.random()*it.size).toInt()
                     it.add(randomIndex,createAPerson())
@@ -56,7 +61,7 @@ class Repository {
         fun deleteRandomData(){
             val datOne = liveDataOne.value
             datOne?.let {
-                val index = (Math.random()*20).toInt()
+                val index = (Math.random()* ranIndexTwo).toInt()
                 for(i in 1..index){
                     val randomIndex = (Math.random()*it.size).toInt()
                     it.removeAt(randomIndex)
@@ -66,7 +71,7 @@ class Repository {
 
             val dataThree = liveDataThree.value
             dataThree?.let {
-                val index = (Math.random()*20).toInt()
+                val index = (Math.random()*ranIndex).toInt()
                 for(i in 1..index){
                     val randomIndex = (Math.random()*it.size).toInt()
                     it.removeAt(randomIndex)
@@ -76,7 +81,7 @@ class Repository {
 
             val dataTwo = liveDataTwo.value
             dataTwo?.let {
-                val index = (Math.random()*20).toInt()
+                val index = (Math.random()* ranIndexTwo).toInt()
                 for(i in 1..index){
                     val randomIndex = (Math.random()*it.size).toInt()
                     it.removeAt(randomIndex)
@@ -88,7 +93,7 @@ class Repository {
         fun updateRandomData(){
             val dataOne = liveDataOne.value
             dataOne?.let {
-                val size = (Math.random()*20).toInt()
+                val size = (Math.random()* ranIndexTwo).toInt()
                 for(i in 1..size){
                     val randomIndex = (Math.random()*it.size).toInt()
                     it[randomIndex].minutes = (Math.random()*15000).toInt()
@@ -99,7 +104,7 @@ class Repository {
 
             val dataTwo = liveDataTwo.value
             dataTwo?.let {
-                val size = (Math.random()*20).toInt()
+                val size = (Math.random()* ranIndexTwo).toInt()
                 for(i in 1..size){
                     val randomIndex = (Math.random()*it.size).toInt()
                     it[randomIndex].minutes = (Math.random()*15000).toInt()
@@ -110,7 +115,7 @@ class Repository {
 
             val dataThree = liveDataThree.value
             dataThree?.let {
-                val size = (Math.random()*20).toInt()
+                val size = (Math.random()*ranIndex).toInt()
                 for(i in 1..size){
                     val randomIndex = (Math.random()*it.size).toInt()
                     it[randomIndex].minutes = (Math.random()*15000).toInt()
@@ -122,7 +127,7 @@ class Repository {
         fun moveDataRandomly(){
             val dataOne = liveDataOne.value
             dataOne?.let {
-                val size = (Math.random()*20).toInt()
+                val size = (Math.random()* ranIndexTwo).toInt()
                 for(i in 1..size){
                     val randomIndex1 = (Math.random()*it.size).toInt()
                     val randomIndex2 = (Math.random()*it.size).toInt()
@@ -136,7 +141,7 @@ class Repository {
 
             val dataTwo = liveDataTwo.value
             dataTwo?.let {
-                val size = (Math.random()*20).toInt()
+                val size = (Math.random()* ranIndexTwo).toInt()
                 for(i in 1..size){
                     val randomIndex1 = (Math.random()*it.size).toInt()
                     val randomIndex2 = (Math.random()*it.size).toInt()
@@ -150,7 +155,7 @@ class Repository {
 
             val dataThree = liveDataThree.value
             dataThree?.let {
-                val size = (Math.random()*20).toInt()
+                val size = (Math.random()*ranIndex).toInt()
                 for(i in 1..size){
                     val randomIndex1 = (Math.random()*it.size).toInt()
                     val randomIndex2 = (Math.random()*it.size).toInt()
@@ -173,6 +178,8 @@ class Repository {
         }
 
         fun operateOnData(action: Int){
+            val TAG = "REPOSITORY"
+            Log.d(TAG,"ACTION: $action")
             when(action){
                 1 -> addRandomData()
                 2 -> deleteRandomData()
