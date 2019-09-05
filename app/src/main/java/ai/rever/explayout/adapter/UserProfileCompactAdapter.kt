@@ -2,6 +2,7 @@ package ai.rever.explayout.adapter
 
 import ai.rever.explayout.R
 import ai.rever.explayout.model.PersonItem
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,8 @@ import kotlinx.android.synthetic.main.user_profile_compact.view.*
 
 class UserProfileCompactAdapter(var personList: List<PersonItem>) : RecyclerView.Adapter<UserProfileCompactAdapter.MyViewHolder>(){
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        Log.e("COMPACT","SIZE: ${personList.size}")
+
         val person = personList[position]
         holder.bindItems(person)
     }

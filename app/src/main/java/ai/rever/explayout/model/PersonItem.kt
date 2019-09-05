@@ -31,6 +31,8 @@ class PersonItem( var name: String) {
     var followers: List<PersonItem> = emptyList()
     var following: List<PersonItem> = emptyList()
 
+    var type: Int? = 1
+
     override fun toString(): String {
         val text = "Name: $name, ID: $id, PhotoURL: $photoUrl Breaths: $breaths Minutes: $minutes "
         return text

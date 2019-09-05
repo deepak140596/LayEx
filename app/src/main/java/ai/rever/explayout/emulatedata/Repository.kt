@@ -12,16 +12,17 @@ class Repository {
         val ranIndex = 40
         val ranIndexTwo = 10
 
-        fun createAPerson(): PersonItem{
+        fun createAPerson(type: Int): PersonItem{
             val index = (Math.random()*100).toInt()
             val person = PersonItem(randomNameList[index])
+            person.type= type
             return person
         }
 
-        fun createNPerson(n: Int): MutableList<PersonItem>{
+        fun createNPerson(type: Int,n: Int): MutableList<PersonItem>{
             val personList: MutableList<PersonItem> = mutableListOf()
             for(i in 1..n){
-                personList.add(createAPerson())
+                personList.add(createAPerson(type))
             }
             return personList
         }
@@ -32,7 +33,7 @@ class Repository {
                 val index = (Math.random()* ranIndexTwo).toInt()
                 for(i in 1..index){
                     val randomIndex = (Math.random()*it.size).toInt()
-                    it.add(randomIndex,createAPerson())
+                    it.add(randomIndex,createAPerson(1))
                 }
                 liveDataOne.postValue(it)
             }
@@ -42,7 +43,7 @@ class Repository {
                 val index = (Math.random()* ranIndex).toInt()
                 for(i in 1..index){
                     val randomIndex = (Math.random()*it.size).toInt()
-                    it.add(randomIndex,createAPerson())
+                    it.add(randomIndex,createAPerson(3))
                 }
                 liveDataThree.postValue(it)
             }
@@ -52,7 +53,7 @@ class Repository {
                 val index = (Math.random()* ranIndexTwo).toInt()
                 for(i in 1..index){
                     val randomIndex = (Math.random()*it.size).toInt()
-                    it.add(randomIndex,createAPerson())
+                    it.add(randomIndex,createAPerson(1))
                 }
                 liveDataTwo.postValue(it)
             }
@@ -172,9 +173,10 @@ class Repository {
             handler.postDelayed( object: Runnable {
                 override fun run() {
                     operateOnData((Math.random()*5).toInt())
-                    handler.postDelayed(this,5000)                }
+                    handler.postDelayed(this,2000)
+                }
             },1000)
-            handler
+
         }
 
         fun operateOnData(action: Int){

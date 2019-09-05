@@ -5,10 +5,12 @@ import ai.rever.explayout.emulatedata.liveDataOne
 import ai.rever.explayout.emulatedata.liveDataThree
 import ai.rever.explayout.emulatedata.liveDataTwo
 import ai.rever.explayout.ui.CoordinatorExample
+import ai.rever.explayout.ui.HeterogenousExample
 import ai.rever.explayout.ui.NestedScrollExample
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_heterogenous_example.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -24,15 +26,17 @@ class MainActivity : AppCompatActivity() {
         mainActivityStartScrollingExampleBtn.setOnClickListener {
             startActivity(Intent(this,NestedScrollExample::class.java))
         }
-
+        mainActivityHetRvBtn.setOnClickListener {
+            startActivity(Intent(this,HeterogenousExample::class.java))
+        }
         setupData()
 
     }
 
     fun setupData(){
-        liveDataOne.value = Repository.createNPerson(80)
-        liveDataTwo.value = Repository.createNPerson(120)
-        liveDataThree.value = Repository.createNPerson(800)
+        liveDataOne.value = Repository.createNPerson(1,80)
+        liveDataTwo.value = Repository.createNPerson(1,120)
+        liveDataThree.value = Repository.createNPerson(3,800)
 
         Repository.mockRealtimeOperations()
     }

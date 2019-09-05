@@ -23,7 +23,7 @@ class NestedScrollExample : AppCompatActivity() {
     lateinit var adapterTwo : UserProfileCompactAdapter
     lateinit var trendingAdapter : UserActivityAdapter
 
-    val currentUser = Repository.createAPerson()
+    val currentUser = Repository.createAPerson(1)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nested_scroll_example)
@@ -34,8 +34,8 @@ class NestedScrollExample : AppCompatActivity() {
     }
 
     fun setupSocialData(){
-        currentUser.followers = Repository.createNPerson((Math.random()*500).toInt())
-        currentUser.following = Repository.createNPerson((Math.random()*500).toInt())
+        currentUser.followers = Repository.createNPerson(1,(Math.random()*500).toInt())
+        currentUser.following = Repository.createNPerson(1,(Math.random()*500).toInt())
     }
 
     fun setupUI(){
