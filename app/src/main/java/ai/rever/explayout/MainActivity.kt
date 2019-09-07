@@ -34,9 +34,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setupData(){
-        liveDataOne.value = Repository.createNPerson(1,80)
-        liveDataTwo.value = Repository.createNPerson(1,120)
-        liveDataThree.value = Repository.createNPerson(3,800)
+        liveDataOne.value = Repository.createNPerson(1,160)
+        liveDataTwo.value = Repository.createNPerson(1,240)
+        liveDataThree.value = Repository.createNPerson(3,1500)
 
         Repository.mockRealtimeOperations()
     }
